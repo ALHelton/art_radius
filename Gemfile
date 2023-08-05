@@ -57,7 +57,8 @@ group :development, :test do
   gem "launchy"
   gem "simplecov"
   gem "shoulda-matchers"
-  gem "simplecov"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
