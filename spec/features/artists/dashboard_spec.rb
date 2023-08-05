@@ -29,6 +29,14 @@ RSpec.describe "artists dashboard" do
       end
     end
 
+    describe "I see my top 5 buyers (by # of successful transactions)" do
+      it "I see each buyer's name" do
+        expect(page).to have_content("1. ")
+      end
+
+      it "I see each buyer's total number of transactions"
+    end
+
     # describe "I see my top 5 buyers (by # of successful transactions)" do
     #   it "I see each buyer's name" do
     #     expect(page).to have_content("1. ")

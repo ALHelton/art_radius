@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :buyer do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    created_at { Faker::Date.between(from: 180.days.ago, to: Date.today) }
-    updated_at { Faker::Date.between(from: 180.days.ago, to: Date.today) }
+    created_at { DateTime.now }
+    updated_at { DateTime.now }
   end
 end

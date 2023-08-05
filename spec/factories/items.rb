@@ -9,7 +9,7 @@ FactoryBot.define do
     price { Faker::Number.number(digits: 4) }
     status { 0 }
     association :artist
-    created_at { Faker::Date.between(from: 180.days.ago, to: Date.today) }
-    updated_at { Faker::Date.between(from: 180.days.ago, to: Date.today) }
+    created_at { DateTime.now }
+    updated_at { DateTime.now }
   end
 end
