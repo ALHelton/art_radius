@@ -1,5 +1,9 @@
-<div class=nav-container>
+<div class="nav-container">
   <p class="nav-text">
-    <%= @artist.name %>
+    <h3><%= @artist.name %></h3>
+    <ul>
+      <li><%=link_to "My Items", artist_items_path(@artist)%></li>
+      <li><%=link_to "My Invoices", artist_invoices_path(@artist)%></li>
+    </ul>
   </p>
 </div>
