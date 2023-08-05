@@ -59,6 +59,7 @@ RSpec.describe "artists dashboard" do
 
         click_link "My Items"
         expect(current_path).to eq(artist_items_path(@me))
+        expect(current_path).to_not eq(artist_items_path(@another))
       end
 
       it "invoices link takes me to my invoices index" do
@@ -66,6 +67,7 @@ RSpec.describe "artists dashboard" do
 
         click_link "My Invoices"
         expect(current_path).to eq(artist_invoices_path(@me))
+        expect(current_path).to_not eq(artist_invoices_path(@another))
       end
     end
   end
