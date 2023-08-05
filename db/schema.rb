@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_05_015808) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_05_032002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_015808) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "price"
+    t.integer "status"
+    t.bigint "invoice_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+    t.index ["item_id"], name: "index_invoice_items_on_item_id"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.integer "status", default: 0
     t.bigint "buyer_id", null: false
@@ -38,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_015808) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.float "price"
+    t.integer "price"
     t.integer "status", default: 0
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
@@ -56,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_015808) do
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
   end
 
+  add_foreign_key "invoice_items", "invoices"
+  add_foreign_key "invoice_items", "items"
   add_foreign_key "invoices", "buyers"
   add_foreign_key "items", "artists"
   add_foreign_key "transactions", "invoices"
